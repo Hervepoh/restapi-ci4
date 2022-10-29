@@ -36,10 +36,12 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
-
-// TODO activate API route 
 $routes->post('/user/login', 'User::login');
-$routes->resource('blog');
+$routes->post('/user/register', 'User::register');
+
+$routes->post('/blog/update/upload/(:num)', 'blog::update_upload');
+$routes->resource('blog', ['filter' => 'oauthFilter']);
+
 /* API ROUTE with Assigning Namespace,
 $routes->group('api', ['namespace' => 'App\API\v1'], static function ($routes) {
     $routes->resource('users');

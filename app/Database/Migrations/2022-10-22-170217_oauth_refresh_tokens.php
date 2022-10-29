@@ -4,12 +4,13 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 use CodeIgniter\Database\RawSql;
-class oauth_access_tokens extends Migration
+
+class oauth_refresh_tokens  extends Migration
 { 
     public function up()
     {
         $this->forge->addField([
-            'access_token' => [
+            'refresh_token' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '40',
                 'null' => false,
@@ -26,22 +27,24 @@ class oauth_access_tokens extends Migration
             ],
             'expires' => [
                 'type'       => 'TIMESTAMP',
-                'default'    => new RawSql('CURRENT_TIMESTAMP')
+                'default'       => new RawSql('CURRENT_TIMESTAMP'),
+                'null' => false,
             ],
             'scope' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '4000',
+                'null' => true,
             ],
         ]);
-        $this->forge->addKey('access_token', true);
-        $this->forge->createTable('oauth_access_tokens');
+        $this->forge->addKey('refresh_token', true);
+        $this->forge->createTable('oauth_refresh_tokens');
         
     }
 
     public function down()
     {
        
-        $this->forge->dropTable('oauth_access_tokens');
+        $this->forge->dropTable('oauth_refresh_tokens');
       
     }
 

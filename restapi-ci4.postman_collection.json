@@ -1,0 +1,375 @@
+{
+	"info": {
+		"_postman_id": "ec541363-089b-4cc3-8c55-1b18422900db",
+		"name": "restapi-ci4",
+		"description": "This API specification is to document the application endpoints for restapi for Third parties.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "blog",
+			"item": [
+				{
+					"name": ":/blog     Lists of all blogs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "6699e691ec8207fd91fd2a932c5a85699cbe3dcc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/blog",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"blog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": ":/blog/{id}     Show a blog",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/blog/6",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"blog",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": ":/blog  Create a new blog",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Post with image",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "Cool Post with image dont forget to subscribe and like",
+									"type": "default"
+								},
+								{
+									"key": "featured_image",
+									"type": "file",
+									"src": "/C:/appStore/pouletpk18/pouletdupays/assets/HeroImage.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/blog",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"blog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": ":/blog/{id} Update a blog",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "New Blog Post t (edited) 3",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "New awesome blog post description",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/blog/8",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"blog",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": ":/blog/{id} Update a blog with image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "default"
+								},
+								{
+									"key": "featured_image",
+									"type": "file",
+									"src": "/C:/appStore/pouletpk18/pouletdupays/assets/Cherry.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/blog/update/upload/11",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"blog",
+								"update",
+								"upload",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": ":/blog/{id} Deleta a blog",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/blog/9",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"blog",
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "testsecret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "testclient",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "default"
+						},
+						{
+							"key": "username",
+							"value": "test@restapi.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/user/login",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				},
+				"description": "Authenticate to the API to acquire authentication token to access subsequent endpoint.\nBase URL : {{base_url}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "testsecret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "testclient",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "test_n",
+							"type": "default"
+						},
+						{
+							"key": "lastname",
+							"value": "test_l",
+							"type": "default"
+						},
+						{
+							"key": "email",
+							"value": "test@restapi.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "default"
+						},
+						{
+							"key": "password_confirm",
+							"value": "password",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"register"
+					]
+				},
+				"description": "Authenticate to the API to acquire authentication token to access subsequent endpoint.\nBase URL : {{base_url}}"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:8080"
+		},
+		{
+			"key": "TOKEN",
+			"value": "8310c9d1b6e1636aa0eafaac222b91214b28b4d5",
+			"type": "default"
+		}
+	]
+}

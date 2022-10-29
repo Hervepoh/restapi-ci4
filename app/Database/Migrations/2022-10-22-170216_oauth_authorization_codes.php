@@ -4,12 +4,13 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 use CodeIgniter\Database\RawSql;
-class oauth_access_tokens extends Migration
+
+class oauth_authorization_codes  extends Migration
 { 
     public function up()
     {
         $this->forge->addField([
-            'access_token' => [
+            'authorization_code' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '40',
                 'null' => false,
@@ -24,24 +25,36 @@ class oauth_access_tokens extends Migration
                 'constraint' => '80',
                 'null' => true,
             ],
+            'redirect_uri' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '2000',
+                'null' => true,
+            ],
             'expires' => [
                 'type'       => 'TIMESTAMP',
-                'default'    => new RawSql('CURRENT_TIMESTAMP')
+                'default'       => new RawSql('CURRENT_TIMESTAMP'),
+                'null' => false,
             ],
             'scope' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '4000',
+                'null' => true,
+            ],
+            'id_token' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '1000',
+                'null' => true,
             ],
         ]);
-        $this->forge->addKey('access_token', true);
-        $this->forge->createTable('oauth_access_tokens');
+        $this->forge->addKey('authorization_code', true);
+        $this->forge->createTable('oauth_authorization_codes');
         
     }
 
     public function down()
     {
        
-        $this->forge->dropTable('oauth_access_tokens');
+        $this->forge->dropTable('oauth_authorization_codes');
       
     }
 

@@ -9,12 +9,13 @@ class BlogModel extends Model
     protected $table            = 'blog';
     protected $primaryKey       = 'post_id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['post_title','post_description'];
-/*
+    protected $allowedFields    = ['post_title','post_description','post_featured_image'];
+    
     // Dates
+    // protected $useSoftDeletes = true;
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
-    protected $createdField  = 'post_created_at ';
+    protected $createdField  = 'created_at ';
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
@@ -34,5 +35,5 @@ class BlogModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-    */
+  
 }

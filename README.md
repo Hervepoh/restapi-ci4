@@ -1,35 +1,61 @@
-# Lien utile :
-https://bshaffer.github.io/oauth2-server-php-docs/
+# Application Starter
 
-# CodeIgniter 4 Application Starter
+Restapi is a PHP CodeIgniter RestAPI full-stack web framework that is light, fast, flexible and secure.
 
-## What is CodeIgniter?
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](http://codeigniter.com).
+## Installation & updates
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+Clone the repository
+`git clone https://github.com/Hervepoh/restapi-ci4` 
+
+Install all PHP dependances
+`composer install` 
+
+
+## Setup
+
+`cp env .env`
+Copy `env` to `.env` and tailor for your app, specifically the baseURL
+and any database settings.
+
+`
+CI_ENVIRONMENT = production 
+app.baseURL = "http://localhost:8080/" 
+database.default.hostname = localhost
+database.default.database = ci4_restapi_test
+database.default.username = ci4
+database.default.password = ci4
+database.default.DBDriver = MySQLi
+database.default.DBPrefix =
+database.default.port = 3306
+database.default.dsn ='mysql:dbname=restapi-ci4;host=localhost'
+`
+Create the database 
+`php spark db:create ci4_restapi` 
+
+Migrate  
+`php spark migrate`
+
+Purchage fake data
+`php spark db:seed Init` //Je dois corriger le bug sur les seeders
+
+
+## Customize the Oauth 
+In App\Libreries\CustomOauthStorage
+ * function getUser
+ * function checkPassword
+ * function hashPassword
+
+
+## helpfull link :
+[oauth2-server-php-docs](https://bshaffer.github.io/oauth2-server-php-docs/)
+[ci4 development repository](https://github.com/codeigniter4/CodeIgniter4).
 
 More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
 
 The user guide corresponding to this version of the framework can be found
 [here](https://codeigniter4.github.io/userguide/).
 
-## Installation & updates
-
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
-
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
-
-## Setup
-
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
 
 ## Important Change with index.php
 

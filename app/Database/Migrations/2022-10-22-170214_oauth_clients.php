@@ -6,8 +6,9 @@ use CodeIgniter\Database\Migration;
 
 class oauth_clients extends Migration
 {
+  
     public function up()
-    {
+    {   
         $this->forge->addField([
             'client_id' => [
                 'type'       => 'VARCHAR',
@@ -37,12 +38,15 @@ class oauth_clients extends Migration
         ]);
         $this->forge->addKey('client_id', true);
         $this->forge->createTable('oauth_clients');
+       
     }
 
     public function down()
     {
+     
         $this->forge->dropTable('oauth_clients');
+        
     }
-
+    
 
 }
